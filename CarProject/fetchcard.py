@@ -2,7 +2,7 @@ import requests, logging
 
 def fetchData(url,params):
     try:
-        response = requests.get('https://db.ygoprodeck.com/api/v7/cardinfo.php',
+        response = requests.get(url,
                                 params = params,
                                 timeout=10
                                 )
@@ -23,5 +23,6 @@ def fetchData(url,params):
     
 if __name__ == '__main__':
     logging.basicConfig(level = logging.INFO)
-    result = fetchData('')
+    result = fetchData('https://db.ygoprodeck.com/api/v7/cardinfo.php',{'archetype':'Dark Magician'})
+    print(result)
         
