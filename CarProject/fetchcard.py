@@ -1,21 +1,27 @@
-import requests
+import requests, logging 
 
 def fetchData(url,params):
-    response = requests.get(url,params = params)
-    
-    if response.status_code == 200:
-        print('Successful connection')
-        response_body = response.json()
+    try:
+        response = requests.get('https://db.ygoprodeck.com/api/v7/cardinfo.php',
+                                params = params,
+                                timeout=10
+                                )
+        
+        response.raise_for_status()
+        logging.info('Successful connection')
 
-        return response_body
-
-    else:
-        print('Connection failed...')
-        print(response.status_code)
-        return 'Error'
+        try: 
+            return response.json()
+        
+        except ValueError:
+            logging.error('Response is not valid JSON')
+            return {'error': 'Invalid JSON Format'}
     
-#def search_feature(data):
+    except requests.exceptions.RequestException as e:
+        logging.error(f'Connection failed: {e}')
+        return {'error' : str(e)}
     
-
 if __name__ == '__main__':
-    print(fetchData('https://db.ygoprodeck.com/api/v7/cardinfo.php',{'archetype':'Dark Magician'}))
+    logging.basicConfig(level = logging.INFO)
+    result = fetchData('')
+        
