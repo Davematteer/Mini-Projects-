@@ -1,4 +1,4 @@
-import requests, logging 
+import requests, logging, json
 
 url = 'https://db.ygoprodeck.com/api/v7/cardinfo.php'
 param = {'archetype':'Dark Magician'}
@@ -32,8 +32,24 @@ def processData():
     card_list = []
 
     for card in response_list:
-        card_list.append(card.get('name'))
-    return card_list
+        card_name = card.get('name','Unknown')
+        card_image = card.get('image','N/A')
+        card_atk = card.get('atk','N/A')
+        card_def = card.get('def','N/A')
+        card_type = card.get('type','Unknown')
+
+        card_dict = {
+            'name' : card_name,
+            'atk' : card_atk,
+            'def': card_def,
+            'type': card_type,
+            'image': card_image
+            }
+        
+        card_json = json.dumps(card_dict)
+
+    return card_json
+
 
 if __name__ == '__main__':
     logging.basicConfig(level = logging.INFO)
