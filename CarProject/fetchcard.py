@@ -33,7 +33,7 @@ def processData():
 
     for card in response_list:
         card_name = card.get('name','Unknown')
-        card_image = card.get('image','N/A')
+        card_image = card.get('card_images',[{}])[0].get('image_url','Unavailable')
         card_atk = card.get('atk','N/A')
         card_def = card.get('def','N/A')
         card_type = card.get('type','Unknown')
