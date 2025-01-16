@@ -1,5 +1,8 @@
 import requests, logging 
 
+url = 'https://db.ygoprodeck.com/api/v7/cardinfo.php'
+param = {'archetype':'Dark Magician'}
+
 def fetchData(url,params):
     try:
         response = requests.get(url,
@@ -21,8 +24,20 @@ def fetchData(url,params):
         logging.error(f'Connection failed: {e}')
         return {'error' : str(e)}
     
+# i think i would want to process the images gathered
+
+def processData():
+   # i wnat to get image
+    response_list = fetchData(url,param).get('data')
+    card_list = []
+
+    for card in response_list:
+        card_list.append(card.get('name'))
+    return card_list
+
 if __name__ == '__main__':
     logging.basicConfig(level = logging.INFO)
-    result = fetchData('https://db.ygoprodeck.com/api/v7/cardinfo.php',{'archetype':'Dark Magician'})
-    print(result)
-        
+    result = fetchData(url,param)
+    print(processData())
+
+      
