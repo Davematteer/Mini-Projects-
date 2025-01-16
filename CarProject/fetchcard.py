@@ -47,8 +47,9 @@ def processData():
             }
         
         card_json = json.dumps(card_dict)
+        card_list.append(card_json)
 
-    return card_json
+    return card_list
 
 
 if __name__ == '__main__':
