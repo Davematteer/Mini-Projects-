@@ -1,9 +1,13 @@
 import requests, logging, json
+from sqlalchemy import create_engine, Column, Integer, String
+from sqlalchemy.ext.declarative import declarative_base
+
+
 
 url = 'https://db.ygoprodeck.com/api/v7/cardinfo.php'
 param = {'archetype':'Dark Magician'}
 
-def fetchData(url,params):
+def fetchData(url,params) -> json:
     try:
         response = requests.get(url,
                                 params = params,
@@ -18,15 +22,15 @@ def fetchData(url,params):
         
         except ValueError:
             logging.error('Response is not valid JSON')
-            return {'error': 'Invalid JSON Format'}
+            return json.dumps({'error': 'Invalid JSON Format'})
     
     except requests.exceptions.RequestException as e:
         logging.error(f'Connection failed: {e}')
-        return {'error' : str(e)}
+        return json.dumps({'error' : str(e)})
     
 # i think i would want to process the images gathered
 
-def processData():
+def processData() -> list:
    # i wnat to get image
     response_list = fetchData(url,param).get('data')
     card_list = []
@@ -51,6 +55,17 @@ def processData():
 
     return card_list
 
+# save images into data base 
+# so before it pulls from the site it checks if it is in the data 
+# and to save on resources we would check the database for the images 
+
+engine = create_engine('sqlite:///cards.db')
+Base = declarative_base()
+
+class Cardentity(Base):
+    __tablename__ = 'cards'
+    id = Column(Integer,primary_key=True)
+    
 
 if __name__ == '__main__':
     logging.basicConfig(level = logging.INFO)

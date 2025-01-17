@@ -19,3 +19,16 @@ randi([30,80]);
 radius = 10;
 area = pi * (radius^2);
 area
+
+%% Question 3
+
+x = 6;
+y = 3;
+
+if x > 5 || y < 10
+    true
+elseif x > 5 && y < 10
+    false
+else
+    false
+end
