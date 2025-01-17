@@ -1,11 +1,9 @@
 import requests, logging, json
-from sqlalchemy import create_engine, Column, Integer, String
-from sqlalchemy.ext.declarative import declarative_base
-
-
 
 url = 'https://db.ygoprodeck.com/api/v7/cardinfo.php'
 param = {'archetype':'Dark Magician'}
+
+# Retriving data from the ygoprodeck api 
 
 def fetchData(url,params) -> json:
     try:
@@ -35,6 +33,7 @@ def processData() -> list:
     response_list = fetchData(url,param).get('data')
     card_list = []
 
+    # for loop to retrieve wanted the fields like name, image and attack
     for card in response_list:
         card_name = card.get('name','Unknown')
         card_image = card.get('card_images',[{}])[0].get('image_url','Unavailable')
@@ -59,13 +58,33 @@ def processData() -> list:
 # so before it pulls from the site it checks if it is in the data 
 # and to save on resources we would check the database for the images 
 
+from sqlalchemy import create_engine, Column, Integer, String, URL
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
+
 engine = create_engine('sqlite:///cards.db')
 Base = declarative_base()
 
 class Cardentity(Base):
     __tablename__ = 'cards'
-    id = Column(Integer,primary_key=True)
+    card_name = Column(Integer,primary_key=True)
+    card_atk = Column(Integer)
+    card_def = Column(Integer)
+    card_type = Column(String)
+    card_image = Column(String)
+
+Base.metadata.create_all(engine)
+
+# Creating a session 
+Session = sessionmaker(bind = engine)
+session = Session()
+
+def Sessionhandler(session):
     
+    pass
+
+#############################################################
+
 
 if __name__ == '__main__':
     logging.basicConfig(level = logging.INFO)
