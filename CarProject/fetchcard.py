@@ -35,11 +35,11 @@ def processData() -> list:
 
     # for loop to retrieve wanted the fields like name, image and attack
     for card in response_list:
-        card_name = card.get('name','Unknown')
+        card_name = card.get('name',None)
         card_image = card.get('card_images',[{}])[0].get('image_url','Unavailable')
-        card_atk = card.get('atk','N/A')
-        card_def = card.get('def','N/A')
-        card_type = card.get('type','Unknown')
+        card_atk = card.get('atk',None)
+        card_def = card.get('def',None)
+        card_type = card.get('type',None)
         
         # creating instance of each card
         cardInstance = Cardentity(Card_name= card_name,Card_atk = card_atk, Card_def = card_def,Card_type = card_type,Card_image = card_image)
@@ -70,7 +70,8 @@ Base = declarative_base()
 
 class Cardentity(Base):
     __tablename__ = 'cards'
-    Card_name = Column(Integer,primary_key=True)
+    Card_id = Column(Integer,primary_key=True)
+    Card_name = Column(Integer)
     Card_atk = Column(Integer)
     Card_def = Column(Integer)
     Card_type = Column(String)
@@ -80,22 +81,38 @@ Base.metadata.create_all(engine)
 
 # Creating a session 
 
-def Sessionhandler():
+def Sessionhandler(card_list: list):
     Session = sessionmaker(bind = engine)  #binding engine
     
     session = Session()  #session creation
     
-    session.add_all(processData())
+    try:
+        # I'm pulling the existing card names in the database
+        existing_card_names = {card.Card_name for card in session.query(Cardentity.Card_name).all()}
 
-    session.commit()
+        # Filter out the cards that are already in the database
+        new_cards = [card for card in card_list if card.Card_name not in existing_card_names]
 
-   
+        if new_cards:
+            session.add_all(new_cards)
+
+
+        session.commit()
+    
+    except Exception as e:
+        session.rollback()
+        print(f'An error occurred {e}')
+
+    finally:
+        session.close()
 #############################################################
 
 
 if __name__ == '__main__':
     logging.basicConfig(level = logging.INFO)
     result = fetchData(url,param)
-    print(processData())
+    data = processData()
+    print(data)
+    Sessionhandler(data)
 
       
