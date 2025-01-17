@@ -5,7 +5,7 @@ param = {'archetype':'Prank-Kids'}
 
 # Retriving data from the ygoprodeck api 
 
-def fetchData(url,params) -> json:
+def fetchData(url,params) -> dict:
     try:
         response = requests.get(url,
                                 params = params,
@@ -71,7 +71,7 @@ Base = declarative_base()
 class Cardentity(Base):
     __tablename__ = 'cards'
     Card_id = Column(Integer,primary_key=True)
-    Card_name = Column(Integer)
+    Card_name = Column(String)
     Card_atk = Column(Integer)
     Card_def = Column(Integer)
     Card_type = Column(String)
