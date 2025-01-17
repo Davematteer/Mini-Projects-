@@ -1,7 +1,7 @@
 import requests, logging, json
 
 url = 'https://db.ygoprodeck.com/api/v7/cardinfo.php'
-param = {'archetype':'Dark Magician'}
+param = {'archetype':'Prank-Kids'}
 
 # Retriving data from the ygoprodeck api 
 
@@ -98,7 +98,8 @@ def Sessionhandler(card_list: list):
 
 
         session.commit()
-    
+        print(existing_card_names)
+
     except Exception as e:
         session.rollback()
         print(f'An error occurred {e}')
@@ -114,5 +115,6 @@ if __name__ == '__main__':
     data = processData()
     print(data)
     Sessionhandler(data)
+
 
       
