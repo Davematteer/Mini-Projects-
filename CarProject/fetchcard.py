@@ -40,17 +40,20 @@ def processData() -> list:
         card_atk = card.get('atk','N/A')
         card_def = card.get('def','N/A')
         card_type = card.get('type','Unknown')
-
-        card_dict = {
-            'name' : card_name,
-            'atk' : card_atk,
-            'def': card_def,
-            'type': card_type,
-            'image': card_image
-            }
         
-        card_json = json.dumps(card_dict)
-        card_list.append(card_json)
+        # creating instance of each card
+        cardInstance = Cardentity(Card_name= card_name,Card_atk = card_atk, Card_def = card_def,Card_type = card_type,Card_image = card_image)
+
+        # card_dict = {
+        #     'name' : card_name,
+        #     'atk' : card_atk,
+        #     'def': card_def,
+        #     'type': card_type,
+        #     'image': card_image
+        #     }
+        
+        # card_json = json.dumps(card_dict)
+        card_list.append(cardInstance)
 
     return card_list
 
@@ -67,22 +70,26 @@ Base = declarative_base()
 
 class Cardentity(Base):
     __tablename__ = 'cards'
-    card_name = Column(Integer,primary_key=True)
-    card_atk = Column(Integer)
-    card_def = Column(Integer)
-    card_type = Column(String)
-    card_image = Column(String)
+    Card_name = Column(Integer,primary_key=True)
+    Card_atk = Column(Integer)
+    Card_def = Column(Integer)
+    Card_type = Column(String)
+    Card_image = Column(String)
 
 Base.metadata.create_all(engine)
 
 # Creating a session 
-Session = sessionmaker(bind = engine)
-session = Session()
 
-def Sessionhandler(session):
+def Sessionhandler():
+    Session = sessionmaker(bind = engine)  #binding engine
     
-    pass
+    session = Session()  #session creation
+    
+    session.add_all(processData())
 
+    session.commit()
+
+   
 #############################################################
 
 
