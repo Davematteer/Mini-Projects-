@@ -98,8 +98,8 @@ def Sessionhandler(card_list: list):
 
 
         session.commit()
-        # images = [card.Card_image for card in session.query(Cardentity.Card_image).all()]
-        # print(existing_card_names,images)
+        images = [card.Card_image for card in session.query(Cardentity.Card_image).all()]
+        print(existing_card_names,images)
 
     except Exception as e:
         session.rollback()
