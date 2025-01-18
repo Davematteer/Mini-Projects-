@@ -12,21 +12,39 @@ class IntroPage extends StatelessWidget{
         children: [
           //logo 
             Center(
-              child: Image.asset('lib/images/man.png')
+              child: Padding(
+                padding: const EdgeInsets.only(top: 30),
+                child: Image.asset('lib/images/man.png'),
+              )
               ),
                Stack(
                 children: [
-                  Image.asset('libs/images/Tooltip.png'),
-                  const Text(
-                    'Hello, this is my first flutter app',
-                    style: TextStyle(
-                      fontSize: 40
-                    ),)
+                  Image.asset('lib/images/Tooltip.png'),
+                  const Column(
+                    children: [
+    
+                      Padding(
+                        padding: EdgeInsets.only(left: 20,
+                          bottom: 20
+                          ),
+                        child: Text(
+                                            'Hello, this is my \nfirst flutter app',
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 40
+                                            ),),
+                      )
+                    ],
+                  ),
+                   
                 ],
-              )
+              ),
 
           // text introducing
-
+          const Text(
+            'New Apps Every month, hopefully ;-)'
+            )
 
           // get started button
         ],
