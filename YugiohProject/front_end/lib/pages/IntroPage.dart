@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:front_end/pages/HomePage.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 
@@ -41,30 +42,30 @@ class IntroPage extends StatelessWidget{
           const Spacer(),
 
           // get started button
-          Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: Container(
-              
-              child: const DecoratedBox(
-                decoration:  BoxDecoration(
-                  boxShadow: <BoxShadow>[
-                    BoxShadow(color: Colors.grey,
-                    blurRadius: 20,
-                    spreadRadius: 5
-                    )
-                  ],
-                  color: Colors.black,
-                  borderRadius: BorderRadius.all(Radius.circular(10))
-                ),
-                child:  Padding(
-                padding:  EdgeInsets.all(8.0),
-                child: Text('Get Started',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20
-                ),),
-              ),
+          GestureDetector(
+            onTap: () => Navigator.pushReplacement(context, MaterialPageRoute(
+              builder: (context) => const HomePage()
               )
+            ),
+            child: const DecoratedBox(
+              decoration:  BoxDecoration(
+                boxShadow: <BoxShadow>[
+                  BoxShadow(color: Colors.grey,
+                  blurRadius: 20,
+                  spreadRadius: 5
+                  )
+                ],
+                color: Colors.black,
+                borderRadius: BorderRadius.all(Radius.circular(10))
+              ),
+              child:  Padding(
+              padding:  EdgeInsets.all(8.0),
+              child: Text('Get Started',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 20
+              ),),
+            ),
             ),
           ),
           const Spacer()
