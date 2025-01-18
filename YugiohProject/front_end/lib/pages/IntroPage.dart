@@ -11,10 +11,20 @@ class IntroPage extends StatelessWidget{
       body: Column(
         children: [
           //logo 
-            Padding(
-              padding: const EdgeInsets.all(80.0),
-              child: Image.asset('lib/images/planting.png'),
-            )
+            Center(
+              child: Image.asset('lib/images/man.png')
+              ),
+               Stack(
+                children: [
+                  Image.asset('libs/images/Tooltip.png'),
+                  const Text(
+                    'Hello, this is my first flutter app',
+                    style: TextStyle(
+                      fontSize: 40
+                    ),)
+                ],
+              )
+
           // text introducing
 
 
