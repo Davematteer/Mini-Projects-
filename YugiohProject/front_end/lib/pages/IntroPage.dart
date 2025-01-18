@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 
 class IntroPage extends StatelessWidget{
@@ -19,22 +20,16 @@ class IntroPage extends StatelessWidget{
               ),
                Stack(
                 children: [
-                  Image.asset('lib/images/Tooltip.png'),
-                  const Column(
+                  Column(
                     children: [
     
-                      Padding(
-                        padding: EdgeInsets.only(left: 20,
-                          bottom: 20
-                          ),
-                        child: Text(
-                                            'Hello, this is my \nfirst flutter app',
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 40
-                                            ),),
-                      )
+                      Text(
+                                  'Welcome\nto my first flutter \napp',
+                                  textAlign: TextAlign.center,
+                                  style: GoogleFonts.notoSerif(
+                                    fontSize: 32,
+                                    fontWeight: FontWeight.bold
+                                  ))
                     ],
                   ),
                    
@@ -42,11 +37,38 @@ class IntroPage extends StatelessWidget{
               ),
 
           // text introducing
-          const Text(
-            'New Apps Every month, hopefully ;-)'
-            )
+
+          const Spacer(),
 
           // get started button
+          Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: Container(
+              
+              child: const DecoratedBox(
+                decoration:  BoxDecoration(
+                  boxShadow: <BoxShadow>[
+                    BoxShadow(color: Colors.grey,
+                    blurRadius: 20,
+                    spreadRadius: 5
+                    )
+                  ],
+                  color: Colors.black,
+                  borderRadius: BorderRadius.all(Radius.circular(10))
+                ),
+                child:  Padding(
+                padding:  EdgeInsets.all(8.0),
+                child: Text('Get Started',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20
+                ),),
+              ),
+              )
+            ),
+          ),
+          const Spacer()
+        
         ],
       )
     );
