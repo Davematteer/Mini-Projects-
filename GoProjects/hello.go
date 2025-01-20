@@ -1,11 +1,9 @@
 package main
 
-import "fmt"
-
-func add(a int, b int) int {
-	return a + b
-}
+import (
+	"fmt"
+)
 
 func main() {
-	fmt.Print(add(2, 3))
+	fmt.Print(Add(2, 3))
 }
