@@ -1,11 +1,11 @@
 package main
 
-import (
-	"fmt"
+import "fmt"
 
-	"rsc.io/quote"
-)
+func add(a int, b int) int {
+	return a + b
+}
 
 func main() {
-	fmt.Print(quote.Go())
+	fmt.Print(add(2, 3))
 }
