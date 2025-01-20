@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt"
+	f "fmt"
 )
 
 func swap(a, b string) (string, string) {
@@ -9,11 +9,14 @@ func swap(a, b string) (string, string) {
 }
 
 func main() {
-	fmt.Println("My favorite song")
+	f.Println("My favorite song")
 
 	var x, y string = swap("hi", "yo")
 
-	fmt.Println(x, y)
+	f.Println(x, y)
+
+	f.Println("Type: %T Value: %v\n", doggy, damn)
+
 }
 
 func test(a, b int) (num, count int) {
@@ -21,3 +24,11 @@ func test(a, b int) (num, count int) {
 	count = 3
 	return
 }
+
+var yap string = "yapping"
+
+var (
+	doggy bool = true
+	damn  int  = 2
+	guchi uint64
+)
