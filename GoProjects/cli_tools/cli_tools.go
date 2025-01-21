@@ -7,7 +7,7 @@ import (
 func main() {
 	sum := 0
 
-	for sum < 1000 {
+	for sum < 5 {
 		sum += 1
 	}
 
