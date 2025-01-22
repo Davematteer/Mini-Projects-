@@ -3,29 +3,23 @@ package main
 import (
 	"fmt"
 	"os"
+	"strings"
 )
 
 func main() {
-	file, err := os.ReadFile("sampledata.txt")
-
-	if err != nil {
-		panic(err)
-	}
-
-	fmt.Print(file)
-
+	fmt.Print(ReadLine("sampledata.txt"))
 }
 
-func ReadFile(filename string) {
-	fmt.Println(filename)
+func ReadLine(filename string) []string {
 	data, err := os.ReadFile(filename)
 
 	if err != nil {
 		panic(err)
 	}
+	data_string := string(data)
 
-	fmt.Println("File name: " + filename)
-	fmt.Println("File size: %d\n", len(data))
-	fmt.Println("File content: %s\n", data)
+	splitString := strings.Split(data_string, " ")
+
+	return splitString
 
 }
