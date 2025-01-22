@@ -10,4 +10,14 @@
 %9 No element-wise addition present in Matlab
 %10 None 
 %11 Incompatible dimensions 
-%12 
+%12 None
+%13 None
+
+%% Question 2
+
+divby6 = @(n) mod(n,6) == 0;
+input = randi([2,45]);
+result = divby6(input);
+
+fprintf("Is %d divisible by 6: %d",input,result);
+
