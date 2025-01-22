@@ -1,24 +1,14 @@
 package main
 
 import (
-	"fmt"
-	"log"
 	"os"
 )
 
-func CreateFile() {
-	fmt.Println("Writing file")
-	file, err := os.Create("trial1.txt")
+func main() {
+	file, err := os.ReadFile("sampledata.txt")
 
 	if err != nil {
-		log.Fatal(err)
+		panic(err)
 	}
-
-	file.WriteString("Initial comment")
-	file.Close()
-
-}
-
-func main() {
 
 }
