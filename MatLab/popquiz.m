@@ -51,4 +51,4 @@ eMean = mean(bMat);
 bMat(1,1:3) = [1 1 1];
 
 %4
-aSub = aMat(2:9,2:9)
+aSub = aMat(2:9,2:9);
