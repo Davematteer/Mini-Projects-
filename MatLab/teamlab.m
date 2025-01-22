@@ -21,3 +21,5 @@ result = divby6(input);
 
 fprintf("Is %d divisible by 6: %d",input,result);
 
+%% Question 3
+
