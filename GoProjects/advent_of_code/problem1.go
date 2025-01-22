@@ -20,6 +20,7 @@ func ReadLine(filename string) []string {
 
 	splitString := strings.Split(data_string, " ")
 
+	var numbers []int
 	return splitString
 
 }
