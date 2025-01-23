@@ -12,15 +12,15 @@ type Person struct {
 	age  int
 }
 
-func changeName(person Person) Person {
+func changeName(person *Person) {
 	person.name = "Dan"
-	return person
+	person.age = 2000000
 }
 
 func main() {
 	person1 := Person{name: "dave", age: 30}
 
-	changedPerson := changeName(person1)
+	changeName(&person1)
 
-	fmt.Println(changedPerson)
+	fmt.Println(person1)
 }
