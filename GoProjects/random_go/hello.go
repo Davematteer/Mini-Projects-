@@ -1,23 +1,23 @@
 package main
 
-import (
-	f "fmt"
-)
+// import (
+// 	f "fmt"
+// )
 
-func swap(a, b string) (string, string) {
-	return b, a
-}
+// func swap(a, b string) (string, string) {
+// 	return b, a
+// }
 
-func main() {
-	f.Println("My favorite song")
+// func main() {
+// 	f.Println("My favorite song")
 
-	var x, y string = swap("hi", "yo")
+// 	var x, y string = swap("hi", "yo")
 
-	f.Println(x, y)
+// 	f.Println(x, y)
 
-	f.Println("Type: %T Value: %v\n", doggy, damn)
+// 	f.Println("Type: %T Value: %v\n", doggy, damn)
 
-}
+// }
 
 func test(a, b int) (num, count int) {
 	num = 2
