@@ -23,4 +23,12 @@ func main() {
 	changeName(&person1)
 
 	fmt.Println(person1)
+
+	loop := [2]string{"yo"}
+	fmt.Println(loop)
+	arr2 := []int{1, 2, 3}
+	arr2 = append(arr2, 10)
+	fmt.Print(arr2)
 }
+
+var arr [3]int
