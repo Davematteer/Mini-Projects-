@@ -28,7 +28,12 @@ func main() {
 	fmt.Println(loop)
 	arr2 := []int{1, 2, 3}
 	arr2 = append(arr2, 10)
-	fmt.Print(arr2)
+	fmt.Println(arr2)
+	score := make(map[string]int)
+
+	score["one"] = 1
+	fmt.Println(score)
+
 }
 
 var arr [3]int
