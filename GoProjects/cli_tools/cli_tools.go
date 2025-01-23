@@ -13,5 +13,11 @@ func sqrt(x float64) string {
 }
 
 func main() {
+	var fish string
+	fish = "water"
+	fmt.Print(fish)
 	fmt.Println(sqrt(2), sqrt(-4))
 }
+
+var number int
+var Myvariable = "djkfj"
