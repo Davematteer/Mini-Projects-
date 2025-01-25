@@ -3,7 +3,7 @@
 %2 No closing bracket and incomplete terms 
 %3 "]" missing and incompatible dimensions
 %4 None 
-%5 Element no present or exceeding array bound 
+%5 Element not present or exceeding array bound 
 %6 Incompatible sizes 
 %7 None 
 %8 None 
@@ -15,7 +15,7 @@
 
 %% Question 2
 
-divby6 = @(n) mod(n,6) == 0;
+divby6 = @(n) mod(n,6) == 0
 input = randi([2,45])
 result = divby6(input)
 
@@ -43,20 +43,18 @@ fprintf('Number of valid trials: %d\n', number_of_trials)
 fprintf('Average volume: %.2f cubic meters\n', avgVolume)
 
 % Plot volume vs radius
-subplot(1, 2, 1);
-plot(filteredR, Volume, 'o-', 'DisplayName', 'Volume vs Radius');
-xlabel('Radius (m)');
-ylabel('Volume (cubic meters)');
-title('Volume vs Radius');
-legend;
-
+%subplot(1, 2, 1);
+plot(filteredR, Volume,'og-', 'DisplayName', 'Volume vs Radius');
+%xlabel('Radius (m)');
+%ylabeVolume,l('Volume (cubic meters)');
+%title('Volume vs Radius');
+hold on;
 % Plot volume vs height
-subplot(1, 2, 2);
-plot(filteredH, Volume, 'o-', 'DisplayName', 'Volume vs Height');
-xlabel('Height (m)');
-ylabel('Volume (cubic meters)');
-title('Volume vs Height');
-legend;
+%subplot(1, 2, 2);
+plot(filteredH,Volume, 'o-', 'DisplayName', 'Volume vs Height');
+ylabel('Volume (m^3)');
+title('Volume vs Height and Volume vrs Radius');
+legend("Radius", "Height");
 
 
 
