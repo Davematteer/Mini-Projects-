@@ -4,6 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"net/http"
+	"time"
 )
 
 const serverPort = 3333
@@ -12,7 +13,7 @@ func main() {
 	go func() {
 		mux := http.NewServeMux()
 		mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-			fmt.Println("server: %s /\n", r.Method)
+			fmt.Printf("server: %s /\n", r.Method)
 		})
 		server := http.Server{
 			Addr:    fmt.Sprintf(":%d", serverPort),
@@ -24,5 +25,5 @@ func main() {
 			}
 		}
 	}()
-
+	time.Sleep(100 * time.Millisecond)
 }
