@@ -4,6 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"net/http"
+	"os"
 	"time"
 )
 
@@ -26,4 +27,13 @@ func main() {
 		}
 	}()
 	time.Sleep(100 * time.Millisecond)
+
+	requestURL := fmt.Sprintf("http://localhost:%d", serverPort)
+	res, err := http.Get(requestURL)
+	if err != nil {
+		fmt.Printf("error making http request: %s \n", err)
+		os.Exit(1)
+	}
+	fmt.Printf("client: got response!\n")
+	fmt.Printf("client: status code: %d\n", res.StatusCode)
 }
