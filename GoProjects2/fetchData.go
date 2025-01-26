@@ -36,4 +36,5 @@ func main() {
 	}
 	fmt.Printf("client: got response!\n")
 	fmt.Printf("client: status code: %d\n", res.StatusCode)
+
 }
