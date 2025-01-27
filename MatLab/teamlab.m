@@ -1,4 +1,6 @@
+
 %% Question 1
+% David Amenumey and Alberta Mahu
 %1 No error
 %2 No closing bracket and incomplete terms 
 %3 "]" missing and incompatible dimensions
@@ -14,6 +16,7 @@
 %13 None
 
 %% Question 2
+% Kwame Addo Kufuor
 
 divby6 = @(n) mod(n,6) == 0
 input = randi([2,45])
@@ -22,6 +25,7 @@ result = divby6(input)
 fprintf("Is %d divisible by 6: %d",input,result)
 
 %% Question 3
+% Eva Mensah
 
 r = [5.499 5.498 5.5 5.5 5.52 5.51 5.5 5.48]
 h = [11.1 11.12 11.09 11.11 11.11 11.07 11.08 11.11]
@@ -43,14 +47,14 @@ fprintf('Number of valid trials: %d\n', number_of_trials)
 fprintf('Average volume: %.2f cubic meters\n', avgVolume)
 
 % Plot volume vs radius
-%subplot(1, 2, 1);
+subplot(1, 2, 1);
 plot(filteredR, Volume,'og-', 'DisplayName', 'Volume vs Radius');
-%xlabel('Radius (m)');
-%ylabeVolume,l('Volume (cubic meters)');
-%title('Volume vs Radius');
+xlabel('Radius (m)');
+ylabeVolume,l('Volume (cubic meters)');
+title('Volume vs Radius');
 hold on;
 % Plot volume vs height
-%subplot(1, 2, 2);
+subplot(1, 2, 2);
 plot(filteredH,Volume, 'o-', 'DisplayName', 'Volume vs Height');
 ylabel('Volume (m^3)');
 title('Volume vs Height and Volume vrs Radius');
