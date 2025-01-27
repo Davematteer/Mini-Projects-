@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"io"
 	"log"
 	"net/http"
 	"os"
@@ -32,4 +33,7 @@ func main() {
 		log.Fatal("It didn't work bitch")
 	}
 
+	body, err := io.ReadAll(res.Body)
+
+	fmt.Println(body)
 }
