@@ -13,6 +13,12 @@ type Weather struct {
 		Name    string `json:"name"`
 		Country string `json:"country"`
 	} `json:"Location"`
+	Current struct {
+		TempC     float64 `json:"temp_c"`
+		Condition struct {
+			Text string `json:"text"`
+		} `json:"condition"`
+	} `json:"current"`
 }
 
 func main() {
