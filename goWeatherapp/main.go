@@ -8,6 +8,13 @@ import (
 	"os"
 )
 
+type Weather struct {
+	Location struct {
+		Name    string `json:"name"`
+		Country string `json:"country"`
+	} `json:"Location"`
+}
+
 func main() {
 	API_KEY := os.Getenv("OPENWEATHER_API_KEY")
 
@@ -35,5 +42,8 @@ func main() {
 
 	body, err := io.ReadAll(res.Body)
 
-	fmt.Println(body)
+	if err != nil {
+		log.Fatal("Bro this shit aint working")
+	}
+	fmt.Println(string(body))
 }
