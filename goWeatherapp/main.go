@@ -9,16 +9,13 @@ import (
 )
 
 type Weather struct {
-	Location struct {
-		Name    string `json:"name"`
-		Country string `json:"country"`
-	} `json:"Location"`
-	Current struct {
-		TempC     float64 `json:"temp_c"`
-		Condition struct {
-			Text string `json:"text"`
-		} `json:"condition"`
-	} `json:"current"`
+	Weather []struct {
+	} `json:""`
+
+	Main struct {
+		Temp     float32 `json:"temp"`
+		Humidity float32 `json:"humidity"`
+	} `json:"main"`
 }
 
 func main() {
