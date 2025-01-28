@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"io"
 	"log"
@@ -54,4 +55,13 @@ func main() {
 		log.Fatal("Bro this shit aint working")
 	}
 	fmt.Println(string(body))
+
+	var weather Weather
+	err = json.Unmarshal(body, &weather)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Println(weather)
+
 }
