@@ -10,12 +10,17 @@ import (
 
 type Weather struct {
 	Weather []struct {
-	} `json:""`
+		Main string `json:"main"`
+	} `json:"weather"`
 
 	Main struct {
 		Temp     float32 `json:"temp"`
 		Humidity float32 `json:"humidity"`
 	} `json:"main"`
+
+	Wind struct {
+		Windspeed float32 `json:"speed"`
+	} `json:"wind"`
 }
 
 func main() {
