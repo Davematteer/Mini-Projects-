@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"io"
 	"log"
@@ -10,8 +11,8 @@ import (
 
 func main() {
 
-	fetchData("Dark Magician")
-
+	var card Card
+	fetchData("Dark Magician", card)
 }
 
 type Card struct {
@@ -24,7 +25,7 @@ type Card struct {
 	} `json:"data"`
 }
 
-func fetchData(cardName string) {
+func fetchData(cardName string, card Card) {
 
 	baseUrl := "https://db.ygoprodeck.com/api/v7/cardinfo.php"
 	parameter := url.Values{}
@@ -43,6 +44,12 @@ func fetchData(cardName string) {
 		log.Fatal(err)
 	}
 
-	bodystring := string(body)
-	fmt.Println(bodystring)
+	//bodystring := string(body)
+
+	err = json.Unmarshal(body, &card)
+
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println(card)
 }
