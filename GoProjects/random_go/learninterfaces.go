@@ -1,18 +1,23 @@
 package main
 
-type shape interface {
-	area() float64
-	perimeter() float64
-}
+import (
+	"fmt"
+	"time"
+)
 
-type rect struct {
-	width, height float64
-}
+func main() {
+	go fmt.Println("1")
+	go fmt.Println("2")
+	go fmt.Println("3")
+	go fmt.Println("Yoolo")
 
-func (r *rect) area() float64 {
-	return r.height * r.width
-}
+	time.Sleep(time.Second)
 
-func (r *rect) perimeter() float64 {
-	return 2 * (r.height + r.width)
+	ch := make(chan string)
+
+	go func() {
+		time.Sleep(time.Second)
+		ch <- "Bitch ass nigga"
+
+	}()
 }
