@@ -1,6 +1,6 @@
 package mocks
 
-import "github.com/Davematter/simple_go_crud_app/crud/pkg/models"
+import "github.com/Davematter/simple_go_crud_app/pkg/models"
 
 var Books = []models.Books{
 	{

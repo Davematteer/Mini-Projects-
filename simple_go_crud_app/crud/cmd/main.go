@@ -1,13 +1,12 @@
 package main
 
 import (
-	"encoding/json"
 	"log"
 	"net/http"
 
 	"github.com/gorilla/mux"
 
-	"github.com/Davematteer/simple_go_crud_app/crud/pkg/handlers"
+	"github.com/Davematteer/simple_go_crud_app/pkg/handlers"
 )
 
 func main() {

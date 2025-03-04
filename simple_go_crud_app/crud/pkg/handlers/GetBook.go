@@ -4,11 +4,11 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/Davematteer/simple_go_crud_app/crud/pkg/mocks"
+	"github.com/Davematteer/simple_go_crud_app/pkg/mocks"
 )
 
 func GetAllBooks(w http.ResponseWriter, r *http.Request) {
 	w.Header().Add("Content-Type", "application/json")
-	w.WriteHeader(http.StatusOk)
+	w.WriteHeader(http.StatusOK)
 	json.NewEncoder(w).Encode(mocks.Books)
 }
