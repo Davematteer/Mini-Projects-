@@ -1,4 +1,4 @@
-module github.com/Davematteer/simple_go_crud_app/crud
+module github.com/Davematteer/simple_go_crud_app
 
 go 1.23.4
 

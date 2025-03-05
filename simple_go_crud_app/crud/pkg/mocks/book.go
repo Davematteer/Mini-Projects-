@@ -1,8 +1,8 @@
 package mocks
 
-import "github.com/Davematter/simple_go_crud_app/pkg/models"
+import "github.com/Davematteer/simple_go_crud_app/pkg/models"
 
-var Books = []models.Books{
+var Books = []models.Book{
 	{
 		ID:     1,
 		Title:  "Golang",
